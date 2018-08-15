@@ -4,16 +4,22 @@ var PORT1 = 7000;
 
 var PORT2 = 7500;
 
-var server = http.createServer(makeRequest);
+var server1 = http.createServer(makeRequest1);
 
-function makeRequest(req, res) {
+var server2 = http.createServer(makeRequest2)
+
+function makeRequest1(req, res) {
     res.end("blah" + req.url)
 };
 
-server.listen(PORT1, function() {
+function makeRequest2(req, res) {
+    res.end("blah" + req.url)
+};
+
+server1.listen(PORT1, function() {
     console.log("Port: " + PORT1 + " says that you are cool...")
 })
 
-server.listen(PORT2, function() {
+server2.listen(PORT2, function() {
     console.log("Port: " + PORT2 + " says but not that cool... ")
 })
